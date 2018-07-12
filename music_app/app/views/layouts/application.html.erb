@@ -22,18 +22,23 @@
       <nav>
         <% if current_user %>
         <p>Logged in as: <%= current_user.email %></p>
-        <form id="logout_form" action=" <%=session_url %>" method="post">
+        <form id="logout_form" action=" <%= session_url %>" method="post">
           <input type="hidden" name="_method" value="delete">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         </form>
         <button type="submit" form="logout_form">Log out</button>
         <% else %>
-        <button>
-          <a href="<%= new_session_url %>">Log in</a>
-        </button>
-        <button>
-          <a href="<%= new_user_url %>">Sign Up</a>
-        </button>
+        <button type="submit" form="login_form">Log in</button>
+        <button type="submit" form="signup_form">Sign up</button>
+
+        <form id="login_form" action=" <%= new_session_url %>" method="get">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        </form>
+
+        <form id="signup_form" action=" <%= new_user_url %>" method="get">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        </form>
+
         <% end %>
       </nav>
     </header>
