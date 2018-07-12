@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :tracks, except: [:index, :new]
 
-  resources :notes, only: [:create]
+  resources :notes, only: [:create, :destroy]
 
   root to: 'bands#index'
 end

@@ -1,1 +1,15 @@
-<p> <%= note.description %> by <%= note.author.email %> </p>
+<tr>
+  <td><%= note.description %></td>
+  <td><%= note.author.email %></td>
+  <td>
+    <% if current_user == note.author %>
+      <form action="<%= note_url %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Delete">
+      </form>
+    <% else %>
+      <button disabled>Delete</button>
+    <% end %>
+  </td>
+</tr>
