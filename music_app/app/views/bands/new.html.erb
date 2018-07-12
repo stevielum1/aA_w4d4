@@ -5,9 +5,14 @@
 <form action="<%= bands_url %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input type="text" name="band[name]" value="<%= @band.name %>">
+  <label for="band_name">Band Name:</label>
+  <input id="band_name"type="text" name="band[name]" value="<%= @band.name %>">
   <br>
 
   <input type="submit" value="Create band">
 
 </form>
+
+<% content_for :footer do %>
+  Band new page
+<% end %>

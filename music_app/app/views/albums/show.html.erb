@@ -1,0 +1,20 @@
+<h1>Album: <%= @album.title %></h1>
+<h2>By: <a href="<%= band_url(@album.band_id) %>"><%= @album.band.name %></a></h2>
+<h2>Year: <%= @album.year %></h2>
+<h2>Type: <%= @album.studio ? "Studio" : "Live" %> </h2>
+
+<%= render 'shared/errors' %>
+
+<button>
+  <a href="<%= edit_album_url(@album) %>">Edit album</a>
+</button>
+
+<form action="<%= album_url(@album) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Delete album">
+</form>
+
+<% content_for :footer do %>
+  Album show page
+<% end %>
