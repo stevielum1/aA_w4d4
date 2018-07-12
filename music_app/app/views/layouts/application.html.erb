@@ -21,7 +21,7 @@
       </button>
       <nav>
         <% if current_user %>
-        <p>Logged in as: <%= current_user.email %></p>
+        Logged in as: <%= current_user.email %>
         <form id="logout_form" action=" <%= session_url %>" method="post">
           <input type="hidden" name="_method" value="delete">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
