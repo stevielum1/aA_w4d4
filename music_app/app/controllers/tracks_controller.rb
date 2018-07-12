@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  before_action :require_user_to_be_logged_in
 
   def show
     @track = Track.find_by(id: params[:id])

@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
     @current_user = user
   end
 
+  def require_user_to_be_logged_in
+    unless current_user
+      flash[:errors] = ["Log in is required"]
+      redirect_to new_session_url
+    end
+  end
+
 end

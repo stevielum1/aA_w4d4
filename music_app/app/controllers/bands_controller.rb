@@ -1,4 +1,5 @@
 class BandsController < ApplicationController
+  before_action :require_user_to_be_logged_in
 
   def index
     @bands = Band.all
