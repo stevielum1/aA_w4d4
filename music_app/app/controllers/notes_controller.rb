@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  before_action :current_user_must_be_author, only: [:destroy]
+
   def create
     @note = Note.new(note_params)
     @note.author_id = current_user.id
@@ -25,5 +27,13 @@ class NotesController < ApplicationController
   private
   def note_params
     params.require(:note).permit(:track_id, :description)
+  end
+
+  def current_user_must_be_author
+    current_user_notes = current_user.notes
+    note = current_user_notes.find_by(id: params[:id])
+    unless note
+      render text: 'You cannot delete this note because you are not the author', status: 403
+    end
   end
 end
