@@ -2,7 +2,7 @@
 
 <%= render 'shared/errors' %>
 
-<form action="<%= tracks_url %>" method="post">
+<form action="<%= track_url(@track) %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -42,3 +42,7 @@
   <input type="submit" value="Edit track">
 
 </form>
+
+<% content_for :footer do %>
+  Track edit page
+<% end %>

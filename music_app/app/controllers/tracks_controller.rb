@@ -7,12 +7,13 @@ class TracksController < ApplicationController
       render :show
     else
       flash[:errors] = ["Could not find track"]
-      redirect_to
+      redirect_to bands_url
     end
   end
 
   def new
     @track = Track.new
+    @track.album_id = params[:album_id]
     @albums = Album.all
     render :new
   end

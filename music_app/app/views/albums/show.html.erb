@@ -15,6 +15,29 @@
   <input type="submit" value="Delete album">
 </form>
 
+<br>
+
+<table>
+  <tr>
+    <th>Track</th>
+    <th>Number</th>
+    <th>Type</th>
+    <th>Page</th>
+  </tr>
+  <% @album.tracks.each do |track| %>
+    <tr>
+      <td><%= track.title %></td>
+      <td><%= track.ord %></td>
+      <td><%= track.bonus ? "Bonus" : "Regular" %></td>
+      <td><a href="<%= track_url(track) %>">Link</a></td>
+    </tr>
+  <% end %>
+</table>
+
+<button>
+  <a href="<%= new_album_track_url(@album) %>">Create track</a>
+</button>
+
 <% content_for :footer do %>
   Album show page
 <% end %>

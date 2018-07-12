@@ -1,7 +1,21 @@
 <%= render 'shared/errors' %>
 
 <h1>Track: <%= @track.title %></h1>
-<h2>Album: <a href="<%= album_url(@track.album_id) %>"><%= @track.album %></a></h2>
+<h2>Album: <a href="<%= album_url(@track.album_id) %>"><%= @track.album.title %></a></h2>
 <h2>Track Number: <%= @track.ord %></h2>
 <h2>Type: <%= @track.bonus ? "Bonus" : "Regular" %></h2>
 <h3>Lyrics: <%= @track.lyrics ? @track.lyrics : "Unknown" %></h3>
+
+<button>
+  <a href="<%= edit_track_url(@track) %>">Edit track</a>
+</button>
+
+<form action="<%= track_url(@track) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Delete track">
+</form>
+
+<% content_for :footer do %>
+  Track show page
+<% end %>
