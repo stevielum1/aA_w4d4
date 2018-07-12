@@ -10,5 +10,6 @@ class Album < ApplicationRecord
   has_many :tracks,
   primary_key: :id,
   foreign_key: :album_id,
-  class_name: :Track
+  class_name: :Track,
+  dependent: :destroy
 end
