@@ -22,11 +22,20 @@
         font-size: 20px;
         margin-left: 10px;
       }
+      nav button {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      #logout_button {
+        border: none;
+        background-color: inherit;
+        font-size: 16px;
+      }
 
       a {
-        color: white;
-        background-color: blue;
-        border-radius: 3px;
+        text-decoration: none;
+        color: black;
       }
 
     </style>
@@ -38,15 +47,21 @@
       Steven's Music App!
       <nav>
         <% if current_user %>
-        <p>You are logged in as: <%= current_user.email %></p>
-        <form action=" <%=session_url %>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="submit" value="Log out">
-        </form>
+        Logged in as: <%= current_user.email %>
+        <button>
+          <form action=" <%=session_url %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input id="logout_button" type="submit" value="Log out">
+          </form>
+        </button>
         <% else %>
-        <a href="<%= new_session_url %>">Log in</a>
-        <a href="<%= new_user_url %>">Sign Up</a>
+        <button>
+          <a href="<%= new_session_url %>">Log in</a>
+        </button>
+        <button>
+          <a href="<%= new_user_url %>">Sign Up</a>
+        </button>
         <% end %>
       </nav>
     </header>

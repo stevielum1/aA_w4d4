@@ -1,0 +1,21 @@
+<h1><%= @band.name %>'s show page</h1>
+
+<%= render 'shared/errors' %>
+
+<button>
+  <a href="<%= bands_url %>">Index</a>
+</button>
+
+<br>
+
+<button>
+  <a href="<%= edit_band_url %>">Edit</a>
+</button>
+
+<form action="<%= band_url(@band) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="Delete">
+
+</form>

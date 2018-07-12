@@ -1,0 +1,22 @@
+<h1>Bands index page</h1>
+
+<%= render 'shared/errors' %>
+
+<button>
+  <a href="<%= new_band_url %>">Create band</a>
+</button>
+
+<ul>
+  <% @bands.each do |band| %>
+  <li>
+    <ul>
+      <li><%= band.name %></li>
+      <li>
+        <button>
+          <a href="<%= band_url(band) %>">Show</a>
+        </button>
+      </li>
+    </ul>
+  </li>
+  <% end %>
+</ul>
