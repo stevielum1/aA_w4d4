@@ -1,0 +1,7 @@
+<%= render 'shared/errors' %>
+
+<h1>Track: <%= @track.title %></h1>
+<h2>Album: <a href="<%= album_url(@track.album_id) %>"><%= @track.album %></a></h2>
+<h2>Track Number: <%= @track.ord %></h2>
+<h2>Type: <%= @track.bonus ? "Bonus" : "Regular" %></h2>
+<h3>Lyrics: <%= @track.lyrics ? @track.lyrics : "Unknown" %></h3>

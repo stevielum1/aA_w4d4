@@ -13,6 +13,7 @@ class TracksController < ApplicationController
 
   def new
     @track = Track.new
+    @albums = Album.all
     render :new
   end
 
@@ -29,6 +30,7 @@ class TracksController < ApplicationController
 
   def edit
     @track = Track.find_by(id: params[:id])
+    @albums = Album.all
     render :edit
   end
 
