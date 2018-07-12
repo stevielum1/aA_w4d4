@@ -7,7 +7,7 @@ class TracksController < ApplicationController
     if @track
       render :show
     else
-      flash[:errors] = ["Could not find track"]
+      flash[:errors] = ["Track does not exist"]
       redirect_to bands_url
     end
   end

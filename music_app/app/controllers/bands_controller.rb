@@ -12,7 +12,7 @@ class BandsController < ApplicationController
     if @band
       render :show
     else
-      flash[:errors] = ["Could not find band"]
+      flash[:errors] = ["Band does not exist"]
       redirect_to bands_url
     end
   end

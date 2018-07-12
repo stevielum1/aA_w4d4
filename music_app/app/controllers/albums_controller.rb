@@ -12,7 +12,7 @@ class AlbumsController < ApplicationController
     if @album
       render :show
     else
-      flash[:errors] = ["Could not find album"]
+      flash[:errors] = ["Album does not exist"]
       redirect_to bands_url
     end
   end
