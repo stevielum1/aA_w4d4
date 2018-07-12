@@ -10,11 +10,13 @@
   <a href="<%= edit_track_url(@track) %>">Edit track</a>
 </button>
 
-<form action="<%= track_url(@track) %>" method="post">
+<form id="delete_track_form" action="<%= track_url(@track) %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value="Delete track">
 </form>
+<button type="submit" form="delete_track_form" name="button">Delete track</button>
+
+<br>
 <br>
 
 <table>
@@ -23,8 +25,8 @@
     <th>Author</th>
     <th>Delete?</th>
   </tr>
-  <% @track.notes.each do |note| %>
-    <%= render 'notes/note', note: note %>
+  <% @track.notes.each_with_index do |note, idx| %>
+    <%= render 'notes/note', note: note, idx: idx%>
   <% end %>
 </table>
 <br>

@@ -9,11 +9,11 @@
   <a href="<%= edit_album_url(@album) %>">Edit album</a>
 </button>
 
-<form action="<%= album_url(@album) %>" method="post">
+<form id="delete_album_form" action="<%= album_url(@album) %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value="Delete album">
 </form>
+<button type="submit" form="delete_album_form" name="button">Delete album</button>
 
 <br>
 

@@ -3,11 +3,11 @@
   <td><%= note.author.email %></td>
   <td>
     <% if current_user == note.author %>
-      <form action="<%= note_url(note) %>" method="post">
+      <form id="delete_note_<%= idx %>" action="<%= note_url(note) %>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="submit" value="Delete">
       </form>
+      <button type="submit" form="delete_note_<%= idx %>" name="button">Delete</button>
     <% else %>
       <button disabled>Delete</button>
     <% end %>

@@ -26,11 +26,13 @@
   <textarea id="track_lyrics" name="track[lyrics]" placeholder="Optional"><%= @track.lyrics %></textarea>
   <br>
 
-  <label for="track_regular">Regular</label>
-  <input id="track_regular" type="radio" name="track[bonus]" value="false" <%= @track.bonus ? "" : "checked" %> >
+  <div>
+    <label for="track_regular">Regular</label>
+    <input id="track_regular" type="radio" name="track[bonus]" value="false" <%= @track.bonus ? "" : "checked" %> >
 
-  <label for="track_bonus">Bonus</label>
-  <input id="track_bonus" type="radio" name="track[bonus]" value="true" <%= @track.bonus ? "checked" : "" %> >
+    <label for="track_bonus">Bonus</label>
+    <input id="track_bonus" type="radio" name="track[bonus]" value="true" <%= @track.bonus ? "checked" : "" %> >
+  </div>
   <br>
 
   <input type="submit" value="Create track">
