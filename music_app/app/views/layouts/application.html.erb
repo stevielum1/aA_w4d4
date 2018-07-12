@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MusicApp</title>
+    <title>Steven's Music App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,6 +16,11 @@
         font-size: 40px;
         justify-content: space-between;
         align-items: center;
+      }
+
+      header button {
+        padding: 10px;
+        font-size: 32px;
       }
 
       nav {
@@ -54,7 +59,9 @@
 
   <body>
     <header>
-      Steven's Music App!
+      <button>
+        <a href="<%= bands_url %>">Steven's Music App</a>
+      </button>
       <nav>
         <% if current_user %>
         Logged in as: <%= current_user.email %>

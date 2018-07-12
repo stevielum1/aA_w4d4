@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :albums, except: [:index, :new]
+
+  root to: 'bands#index'
 end
