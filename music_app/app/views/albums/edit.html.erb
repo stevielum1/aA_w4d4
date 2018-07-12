@@ -4,7 +4,6 @@
 
 <form action="<%= album_url %>" method="post">
   <input type="hidden" name="_method" value="patch">
-
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <label for="album_band">Band</label>
@@ -24,8 +23,10 @@
   <input type="number" name="album[year]" value="<%= @album.year %>" min="1900" max="2018">
   <br>
 
+
   <label for"album_live">Live</label>
   <input id="album_live" type="radio" name="album[studio]" value="false" <%= @album.studio ? "" : "checked" %> >
+
   <label for="album_studio">Studio</label>
   <input id="album_studio"type="radio" name="album[studio]" value="true" <%= @album.studio ? "checked" : "" %> >
   <br>

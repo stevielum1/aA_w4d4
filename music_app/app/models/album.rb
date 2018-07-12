@@ -1,5 +1,6 @@
 class Album < ApplicationRecord
-  validates :title, :year, :studio, presence: true
+  validates :title, :year, presence: true
+  validates :studio, inclusion: { in: [true, false] }
 
   belongs_to :band,
   primary_key: :id,

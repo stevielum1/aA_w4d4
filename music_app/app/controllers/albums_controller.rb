@@ -28,7 +28,7 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to album_url(@album)
     else
-      flash[:errors] = ["Could not create album"]
+      flash[:errors] = @album.errors.full_messages
       redirect_to new_band_album_url(@album.band_id)
     end
   end
@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
     if @album.update_attributes(album_params)
       redirect_to album_url(@album)
     else
-      flash[:errors] = ["Could not update album"]
+      flash[:errors] = @album.errors.full_messages
       redirect_to edit_album_url(@album)
     end
   end
@@ -56,7 +56,7 @@ class AlbumsController < ApplicationController
     if @album.destroy
       redirect_to band_url(@album.band_id)
     else
-      flash[:errors] = ["Could not delete album"]
+      flash[:errors] = @album.errors.full_messages
       redirect_to album_url(@album)
     end
   end

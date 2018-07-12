@@ -11,7 +11,7 @@ class BandsController < ApplicationController
     if @band
       render :show
     else
-      flash[:errors] = ["Invalid band"]
+      flash[:errors] = ["Could not find band"]
       redirect_to bands_url
     end
   end
@@ -27,7 +27,7 @@ class BandsController < ApplicationController
     if @band.save
       redirect_to band_url(@band)
     else
-      flash[:errors] = ["Invalid band name"]
+      flash[:errors] = @band.errors.full_messages
       redirect_to new_band_url
     end
   end
@@ -43,8 +43,8 @@ class BandsController < ApplicationController
     if @band.update_attributes(band_params)
       redirect_to band_url(@band)
     else
-      flash[:errors] = ["Could not update band"]
-      render :update
+      flash[:errors] = @band.errors.full_messages
+      redirect_to edit_band_url(@band)
     end
   end
 
@@ -54,7 +54,7 @@ class BandsController < ApplicationController
     if @band.destroy
       redirect_to bands_url
     else
-      flash[:errors] = ["Could not delete band"]
+      flash[:errors] = @band.errors.full_messages
       redirect_to bands_url
     end
   end
