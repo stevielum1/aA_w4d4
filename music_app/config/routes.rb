@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   resources :notes, only: [:create, :destroy]
 
-  root to: 'bands#index'
+  root to: 'sessions#new'
 end

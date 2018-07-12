@@ -12,7 +12,12 @@
   <body>
     <header>
       <button>
-        <a href="<%= bands_url %>">Steven's Music App</a>
+        <% if logged_in? %>
+          <% root = bands_url %>
+        <% else %>
+          <% root = root_url %>
+        <% end %>
+        <a href="<%= root %>">Steven's Music App</a>
       </button>
       <nav>
         <% if current_user %>
