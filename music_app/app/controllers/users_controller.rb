@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
 
+  def show
+    @user = User.find_by(id: params[:id])
+
+    if @user
+      render :show
+    else
+      redirect_to users_url
+    end
+  end
+
   def new
     @user = User.new
     render :new
@@ -10,10 +20,10 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in_user!(@user)
-      redirect_to users_url
+      redirect_to user_url(@user)
     else
-      flash.now[:errors] = ["Invalid username/email"]
-      render :create
+      flash[:errors] = ["Invalid email/password"]
+      redirect_to new_user_url
     end
   end
 
