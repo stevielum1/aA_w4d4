@@ -25,12 +25,14 @@
   <tr>
     <th>Albums</th>
     <th>Year</th>
+    <th>Type</th>
     <th>Page</th>
   </tr>
   <% @band.albums.each do |album| %>
     <tr>
       <td><%= album.title %></td>
       <td><%= album.year %></td>
+      <td><%= album.studio ? "Studio" : "Live" %></td>
       <td><a href="<%= album_url(album) %>">Link</a></td>
     </tr>
   <% end %>
