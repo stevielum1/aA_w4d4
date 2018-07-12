@@ -2,16 +2,18 @@
 
 <%= render 'shared/errors' %>
 
-<form action="<%= bands_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<div class="form_container">
+  <form action="<%= bands_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label for="band_name">Band Name:</label>
-  <input id="band_name"type="text" name="band[name]" value="<%= @band.name %>">
-  <br>
+    <label for="band_name">Band Name:</label>
+    <input id="band_name"type="text" name="band[name]" value="<%= @band.name %>">
+    <br>
 
-  <input type="submit" value="Create band">
+    <input type="submit" value="Create band">
 
-</form>
+  </form>
+</div>
 
 <% content_for :footer do %>
   Band new page

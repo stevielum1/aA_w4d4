@@ -2,42 +2,44 @@
 
 <%= render 'shared/errors' %>
 
-<form action="<%= tracks_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<div class="form_container">
+  <form action="<%= tracks_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label for="track_album">Album:</label>
-  <select id="track_album" name="track[album_id]">
-    <option disabled <%= @track.album_id.nil? ? "" : "selected" %> >--Select album--</option>
-    <% @albums.each do |album| %>
-      <option value="<%= album.id %>" <%= @track.album_id == album.id ? "selected" : "" %> ><%= album.title %></option>
-    <% end %>
-  </select>
-  <br>
+    <label for="track_album">Album:</label>
+    <select id="track_album" name="track[album_id]">
+      <option disabled <%= @track.album_id.nil? ? "" : "selected" %> >--Select album--</option>
+      <% @albums.each do |album| %>
+        <option value="<%= album.id %>" <%= @track.album_id == album.id ? "selected" : "" %> ><%= album.title %></option>
+      <% end %>
+    </select>
+    <br>
 
-  <label for="track_title">Title:</label>
-  <input id="track_title" type="text" name="track[title]" value="<%= @track.title %>">
-  <br>
+    <label for="track_title">Title:</label>
+    <input id="track_title" type="text" name="track[title]" value="<%= @track.title %>">
+    <br>
 
-  <label for="track_ord">Track Number:</label>
-  <input id="track_ord" type="number" name="track[ord]" value="<%= @track.ord %>" min="1" max="25">
-  <br>
+    <label for="track_ord">Track Number:</label>
+    <input id="track_ord" type="number" name="track[ord]" value="<%= @track.ord %>" min="1" max="25">
+    <br>
 
-  <label for="track_lyrics">Lyrics:</label>
-  <textarea id="track_lyrics" name="track[lyrics]" placeholder="Optional"><%= @track.lyrics %></textarea>
-  <br>
+    <label for="track_lyrics">Lyrics:</label>
+    <textarea id="track_lyrics" name="track[lyrics]" placeholder="Optional"><%= @track.lyrics %></textarea>
+    <br>
 
-  <div>
-    <label for="track_regular">Regular</label>
-    <input id="track_regular" type="radio" name="track[bonus]" value="false" <%= @track.bonus ? "" : "checked" %> >
+    <div>
+      <label for="track_regular">Regular</label>
+      <input id="track_regular" type="radio" name="track[bonus]" value="false" <%= @track.bonus ? "" : "checked" %> >
 
-    <label for="track_bonus">Bonus</label>
-    <input id="track_bonus" type="radio" name="track[bonus]" value="true" <%= @track.bonus ? "checked" : "" %> >
-  </div>
-  <br>
+      <label for="track_bonus">Bonus</label>
+      <input id="track_bonus" type="radio" name="track[bonus]" value="true" <%= @track.bonus ? "checked" : "" %> >
+    </div>
+    <br>
 
-  <input type="submit" value="Create track">
+    <input type="submit" value="Create track">
 
-</form>
+  </form>
+</div>
 
 <% content_for :footer do %>
   Track new page

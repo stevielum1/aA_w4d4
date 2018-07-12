@@ -16,14 +16,12 @@
       </button>
       <nav>
         <% if current_user %>
-        Logged in as: <%= current_user.email %>
-        <button>
-          <form action=" <%=session_url %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input id="logout_button" type="submit" value="Log out">
-          </form>
-        </button>
+        <p>Logged in as: <%= current_user.email %></p>
+        <form id="logout_form" action=" <%=session_url %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        </form>
+        <button type="submit" form="logout_form">Log out</button>
         <% else %>
         <button>
           <a href="<%= new_session_url %>">Log in</a>
@@ -34,7 +32,6 @@
         <% end %>
       </nav>
     </header>
-
     <%= yield %>
   </body>
   <footer>
