@@ -15,9 +15,11 @@
   <% end %>
 </table>
 
-<button>
-  <a href="<%= new_band_url %>">Create band</a>
-</button>
+<button type="submit" form="create_band_form">Create band</button>
+
+<form id="create_band_form" action="<%= new_band_url %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
 
 <% content_for :footer do %>
   Band index page

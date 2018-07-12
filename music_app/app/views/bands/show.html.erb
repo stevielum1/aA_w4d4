@@ -2,23 +2,27 @@
 
 <h1>Band: <%= @band.name %></h1>
 
-<button>
-  <a href="<%= bands_url %>">Back to bands</a>
-</button>
+<div class="button_container">
+  <button type="submit" form="back_to_bands_form">Back to bands</button>
 
-<br>
+  <button type="submit" form="edit_band_form">Edit band</button>
 
-<button>
-  <a href="<%= edit_band_url %>">Edit band</a>
-</button>
+  <button type="submit" form="delete_band_form" name="button">Delete band</button>
+</div>
+
+<form id="back_to_bands_form" action="<%= bands_url %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
+
+<form id="edit_band_form" action="<%= edit_band_url(@band) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
 
 <form id="delete_band_form" action="<%= band_url(@band) %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 </form>
-<button type="submit" form="delete_band_form" name="button">Delete band</button>
 
-<br>
 <br>
 
 <table>
@@ -39,9 +43,11 @@
 </table>
 <br>
 
-<button>
-  <a href="<%= new_band_album_url(@band) %>">Create album</a>
-</button>
+<button type="submit" form="create_album_form">Create album</button>
+
+<form id="create_album_form" action="<%= new_band_album_url(@band) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
 
 <% content_for :footer do %>
   Band show page

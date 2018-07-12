@@ -5,16 +5,20 @@
 <h2>Year: <%= @album.year %></h2>
 <h2>Type: <%= @album.studio ? "Studio" : "Live" %> </h2>
 
-<button>
-  <a href="<%= edit_album_url(@album) %>">Edit album</a>
-</button>
+<div class="button_container">
+  <button type="submit" form="edit_album_form">Edit album</button>
+
+  <button type="submit" form="delete_album_form" name="button">Delete album</button>
+</div>
+
+<form id="edit_album_form" action="<%= edit_album_url(@album) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
 
 <form id="delete_album_form" action="<%= album_url(@album) %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 </form>
-<button type="submit" form="delete_album_form" name="button">Delete album</button>
-
 <br>
 
 <table>
@@ -34,9 +38,11 @@
   <% end %>
 </table>
 
-<button>
-  <a href="<%= new_album_track_url(@album) %>">Create track</a>
-</button>
+<button type="submit" form="create_track_form">Create track</button>
+
+<form id="create_track_form" action="<%= new_album_track_url(@album) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>
 
 <% content_for :footer do %>
   Album show page
