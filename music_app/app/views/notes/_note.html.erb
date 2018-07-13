@@ -7,9 +7,7 @@
         <input type="hidden" name="_method" value="delete">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       </form>
-      <div class="button_container">
-        <button type="submit" form="delete_note_<%= idx %>" name="button">Delete</button>
-      </div>
+      <button type="submit" form="delete_note_<%= idx %>" name="button">Delete</button>
     <% else %>
       <button disabled>Delete</button>
     <% end %>
