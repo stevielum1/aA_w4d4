@@ -38,7 +38,9 @@
   <% end %>
 </table>
 
-<button type="submit" form="create_track_form">Create track</button>
+<div class="button_container">
+  <button type="submit" form="create_track_form">Create track</button>
+</div>
 
 <form id="create_track_form" action="<%= new_album_track_url(@album) %>" method="get">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
